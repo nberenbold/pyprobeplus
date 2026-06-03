@@ -46,7 +46,7 @@ def _parse_temperature_fm22(temp_bytes: bytearray) -> float:
     Format: little-endian uint16 in units of 0.1°C.
     Verified against FM2201+ hardware at multiple temperatures.
     """
-    return int.from_bytes(temp_bytes, 'little') / FM22_TEMP_DIVISOR
+    return int.from_bytes(temp_bytes, 'little', signed=True) / FM22_TEMP_DIVISOR
 
 
 class ParserBase:
